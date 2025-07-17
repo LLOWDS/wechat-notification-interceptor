@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="微信支付通知拦截器"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="检查通知权限状态..."
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:background="@drawable/status_background"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/enableButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启用通知权限"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="拦截到的通知："
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notificationRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/recyclerview_background" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用说明：\n1. 点击上方按钮启用通知访问权限\n2. 在设置中找到本应用并开启权限\n3. 返回应用，进行微信支付测试\n4. 支付成功后通知将显示在上方列表中"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:background="@drawable/help_background" />
+
+</LinearLayout>
