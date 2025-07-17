@@ -25,6 +25,13 @@ APP_HOME=`dirname "$PRG"`
 # Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
 DEFAULT_JVM_OPTS=""
 
-GRADLE_CMD="java $DEFAULT_JVM_OPTS -jar $APP_HOME/gradle/wrapper/gradle-wrapper.jar $@"
+# Look for gradle-wrapper.jar
+WRAPPER_JAR="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+if [ ! -f "$WRAPPER_JAR" ]; then
+  echo "gradle-wrapper.jar not found at $WRAPPER_JAR"
+  exit 1
+fi
+
+GRADLE_CMD="java $DEFAULT_JVM_OPTS -jar $WRAPPER_JAR $@"
 
 exec $GRADLE_CMD
