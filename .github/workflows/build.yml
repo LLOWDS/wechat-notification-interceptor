@@ -38,18 +38,40 @@ jobs:
         echo "--- settings.gradle ---"
         cat settings.gradle
 
+    - name: Fix Gradle Properties
+      run: |
+        echo "Fixing gradle.properties..."
+        # 确保AndroidX配置正确
+        cat > gradle.properties << 'EOF'
+        # Project-wide Gradle settings
+        org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+        org.gradle.parallel=true
+        org.gradle.caching=true
+
+        # AndroidX settings
+        android.useAndroidX=true
+        android.enableJetifier=true
+        android.nonTransitiveRClass=true
+
+        # Gradle configuration
+        org.gradle.configuration-cache=false
+        EOF
+
+        echo "=== Updated gradle.properties ==="
+        cat gradle.properties
+
     - name: Initialize Gradle Wrapper
       run: |
         # 确保gradle wrapper目录存在
         mkdir -p gradle/wrapper
-        
+
         # 使用gradle 7.6初始化wrapper
         echo "Initializing Gradle wrapper with version 7.6..."
         gradle wrapper --gradle-version=7.6
-        
+
         # 确保gradlew可执行
         chmod +x gradlew
-        
+
         # 验证文件
         echo "=== Gradle wrapper files ==="
         ls -la gradle/wrapper/
